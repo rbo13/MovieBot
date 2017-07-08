@@ -58,13 +58,13 @@ function sendMessage(sender, message) {
     }
   }, function(error, response, body) {
     if(error) {
-      throw error;
+      console.log("Something went wrong!");
     }else if(response.body.error) {
-      throw response.body.error
+      console.log("Response body error!");
     }
   })
 }
 
 app.listen(app.get('port'), function() {
-  console.log("Running on port: +", app.get("port"));
+  console.log("Running on port: " + app.get("port"));
 });
