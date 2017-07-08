@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 });
 
 // Facebook page token
-const token = "EAAcAuxG36YUBAMg9dJYD4lbNqNUS2o4p8fCTZCUA7oKSbDiuFw4JeCa3CkpOZBBwhZCbQDHbTJaob1cw9QorfPII91LOyAezV0tZAqgMLjn5hS2Xq1TcteFdi3N41dk55TLMPFRfexqCVazyP2urFU5OCZAUWt7RTke3uHoOpGwFdONRY2Xy8"
+const token = "EAAcAuxG36YUBAPhLIOtOmq8462soMCQfa3QDRKDQ8wZCLVhrHM4116wGPEdmhED6znA8IWeQCqK8NZCZCgfGhmy7cejbAofEP2JGtAjXetsZCwjmcuph58myRxOnsZA4AZBo5BLkLQkOHwZBwCyFBtAnD4ZAGjnLp6kKyRkgl1RbXjDmadY3ZBQIR"
 
 // Facebook
 app.get('/webhook/', function(req, res) {
@@ -46,8 +46,8 @@ app.post('/webhook/', function(req, res) {
 });
 
 // Send messag back.
-function sendMessage(sender, message) {
-  let messageData = { text: message };
+function sendMessage(sender, text) {
+  let messageData = { text: text };
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token: token },
