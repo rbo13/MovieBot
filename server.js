@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 });
 
 // Facebook page token
-const token = "EAAcAuxG36YUBAPhLIOtOmq8462soMCQfa3QDRKDQ8wZCLVhrHM4116wGPEdmhED6znA8IWeQCqK8NZCZCgfGhmy7cejbAofEP2JGtAjXetsZCwjmcuph58myRxOnsZA4AZBo5BLkLQkOHwZBwCyFBtAnD4ZAGjnLp6kKyRkgl1RbXjDmadY3ZBQIR"
+let token = "EAAcAuxG36YUBAPhLIOtOmq8462soMCQfa3QDRKDQ8wZCLVhrHM4116wGPEdmhED6znA8IWeQCqK8NZCZCgfGhmy7cejbAofEP2JGtAjXetsZCwjmcuph58myRxOnsZA4AZBo5BLkLQkOHwZBwCyFBtAnD4ZAGjnLp6kKyRkgl1RbXjDmadY3ZBQIR"
 
 // Facebook
 app.get('/webhook/', function(req, res) {
@@ -51,7 +51,7 @@ function sendText(sender, text) {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token: token },
-    method: "POST",
+    method: 'POST',
     json: {
       recipient: { id: sender },
       message: messageData
@@ -60,11 +60,11 @@ function sendText(sender, text) {
     if(error) {
       console.log("Something went wrong!");
     }else if(response.body.error) {
-      console.log("Response body error!");
+      console.log('Error: ', response.body.error);
     }
   })
 }
 
 app.listen(app.get('port'), function() {
-  console.log("Running on port: " + app.get("port"));
+  console.log("Running on port: ", app.get("port"));
 });
