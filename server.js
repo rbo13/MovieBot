@@ -31,7 +31,7 @@ app.get('/webhook/', function(req, res) {
 
 // SEND Facebook
 app.post('/webhook/', function(req, res) {
-  let messaging_events = req.body.entry[0].messaging_events;
+  let messaging_events = req.body.entry[0].messaging;
 
   for(let i = 0; i < messaging_events.length; i++) {
     let event = messaging_events[i];
