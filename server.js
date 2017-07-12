@@ -8,7 +8,9 @@ const app = express();
 
 // Facebook page token
 let token = "EAAcAuxG36YUBAPhLIOtOmq8462soMCQfa3QDRKDQ8wZCLVhrHM4116wGPEdmhED6znA8IWeQCqK8NZCZCgfGhmy7cejbAofEP2JGtAjXetsZCwjmcuph58myRxOnsZA4AZBo5BLkLQkOHwZBwCyFBtAnD4ZAGjnLp6kKyRkgl1RbXjDmadY3ZBQIR"
-const apiAIApp = require("apiai")("75a1619b38fb4e298d11545d646e48b7" );
+const apiai = require("apiai");
+
+const apiAIApp = apiai("75a1619b38fb4e298d11545d646e48b7 ");
 
 
 app.set('port', (process.env.PORT || 1340))
@@ -32,19 +34,32 @@ app.get('/webhook/', function(req, res) {
 });
 
 // SEND Facebook
-app.post('/webhook/', function(req, res) {
-  let messaging_events = req.body.entry[0].messaging;
-
-  for(let i = 0; i < messaging_events.length; i++) {
-    let event = messaging_events[i];
-    let sender = event.sender.id;
-
-    if(event.message && event.message.text) {
-      let text = event.message.text;
-      sendMessage(event);
-    }
+// app.post('/webhook/', function(req, res) {
+//   let messaging_events = req.body.entry[0].messaging;
+//
+//   for(let i = 0; i < messaging_events.length; i++) {
+//     let event = messaging_events[i];
+//     let sender = event.sender.id;
+//
+//     if(event.message && event.message.text) {
+//       let text = event.message.text;
+//       sendMessage(event);
+//     }
+//   }
+//   res.sendStatus(200)
+// });
+app.post('/webhook', (req, res) => {
+  console.log(req.body);
+  if (req.body.object === 'page') {
+    req.body.entry.forEach((entry) => {
+      entry.messaging.forEach((event) => {
+        if (event.message && event.message.text) {
+          sendMessage(event);
+        }
+      });
+    });
+    res.status(200).end();
   }
-  res.sendStatus(200)
 });
 
 // Send messag back.
