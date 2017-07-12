@@ -7,7 +7,7 @@ const request = require("request");
 const app = express();
 
 // Facebook page token
-let token = "EAAcAuxG36YUBAPhLIOtOmq8462soMCQfa3QDRKDQ8wZCLVhrHM4116wGPEdmhED6znA8IWeQCqK8NZCZCgfGhmy7cejbAofEP2JGtAjXetsZCwjmcuph58myRxOnsZA4AZBo5BLkLQkOHwZBwCyFBtAnD4ZAGjnLp6kKyRkgl1RbXjDmadY3ZBQIR"
+let token = "EAAcAuxG36YUBAGEjS38y3sYhkXYmZAt9xVmAgTpNe4NG4XHefeVGietg5rN9D4Ta35UpTZBlYZAqVLzlb1yLejECj8EjhPdSfDZCLMVZBMKWrDw1iw9k94fAHmpi2UaBCl1hmGTojMy9HoZBX4DFZA2Mk84RyFAruc1B0rTPAU8HeC6i2uVaQ9D"
 const apiai = require("apiai");
 
 const apiAIApp = apiai("75a1619b38fb4e298d11545d646e48b7 ");
