@@ -16,5 +16,8 @@
     "express": "^4.15.3",
     "morgan": "^1.8.2",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "apiai": "^4.0.3"
   }
 }
